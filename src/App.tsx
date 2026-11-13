@@ -347,7 +347,7 @@ function App() {
             onClick={() => setView("home")}
             aria-label="Go to Atlas home"
           >
-            <span>A</span>
+            <span>✣</span>
           </button>
           {!sidebarCollapsed && (
             <div className="brand__text">
