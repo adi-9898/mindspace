@@ -1,0 +1,182 @@
+import type { Collection, KnowledgeItem, Tag } from "./types";
+
+export const collections: Collection[] = [
+  {
+    id: "product",
+    name: "Product",
+    description: "Product strategy, discovery, and planning.",
+    parentId: null,
+    createdAt: "2026-08-12T09:00:00.000Z",
+  },
+  {
+    id: "research",
+    name: "Research",
+    description: "Source material and synthesized findings.",
+    parentId: null,
+    createdAt: "2026-08-18T09:00:00.000Z",
+  },
+  {
+    id: "learning",
+    name: "Learning",
+    description: "Courses, books, and durable lessons.",
+    parentId: null,
+    createdAt: "2026-09-02T09:00:00.000Z",
+  },
+  {
+    id: "personal",
+    name: "Personal",
+    description: "Personal ideas, plans, and reflections.",
+    parentId: null,
+    createdAt: "2026-09-14T09:00:00.000Z",
+  },
+  {
+    id: "atlas",
+    name: "Atlas",
+    description: "The Atlas knowledge workspace project.",
+    parentId: "product",
+    createdAt: "2026-10-01T09:00:00.000Z",
+  },
+];
+
+export const tags: Tag[] = [
+  { id: "strategy", name: "Strategy", color: "default" },
+  { id: "research", name: "Research", color: "success" },
+  { id: "decision", name: "Decision", color: "warning" },
+  { id: "product", name: "Product", color: "default" },
+  { id: "reference", name: "Reference", color: "default" },
+  { id: "follow-up", name: "Follow-up", color: "danger" },
+];
+
+export const sampleItems: KnowledgeItem[] = [
+  {
+    id: "atlas-principles",
+    title: "Atlas product principles",
+    type: "document",
+    summary:
+      "The durable principles shaping Atlas: fast capture, quiet organization, and trustworthy retrieval.",
+    content: `<h2>Purpose</h2><p>Atlas should make knowledge feel close at hand. Capture must be immediate, structure should emerge gradually, and retrieval should be dependable.</p><h2>Principles</h2><ul><li><strong>Capture without ceremony.</strong> Start writing before deciding where an item belongs.</li><li><strong>Organization is progressive.</strong> Collections and tags are useful, never mandatory.</li><li><strong>Search is navigation.</strong> Every object should be reachable by title, content, or context.</li><li><strong>Content stays primary.</strong> Interfaces should recede while reading and writing.</li></ul><blockquote>Capture effortlessly. Organize intelligently. Find anything.</blockquote>`,
+    collectionId: "atlas",
+    tags: ["Product", "Strategy"],
+    isFavorite: true,
+    createdAt: "2026-10-10T08:30:00.000Z",
+    updatedAt: "2026-11-12T15:42:00.000Z",
+    relatedKnowledgeIds: ["weekly-product-review", "search-research"],
+  },
+  {
+    id: "weekly-product-review",
+    title: "Weekly product review",
+    type: "meeting",
+    summary:
+      "Reviewed library navigation, agreed on progressive organization, and assigned the search prototype.",
+    content: `<h2>Summary</h2><p>The team reviewed the first workspace concepts. We agreed to simplify the default library view and keep metadata in a contextual panel.</p><h2>Discussion points</h2><ul><li>Navigation should remain stable across reading and editing.</li><li>Collections can be nested, but only one level is needed in the MVP.</li><li>Search should group results by content type.</li></ul><h2>Decisions</h2><ul><li>Use a three-region workspace on desktop.</li><li>Keep creation available from every view.</li></ul><h2>Action items</h2><ul><li>Adam — validate the search interaction.</li><li>Maya — prepare realistic meeting content.</li></ul>`,
+    collectionId: "atlas",
+    tags: ["Decision", "Product"],
+    isFavorite: false,
+    participants: ["Adam Weber", "Maya Chen", "Jon Bell"],
+    decisions: [
+      "Use a three-region workspace on desktop",
+      "Keep creation available from every view",
+    ],
+    actionItems: [
+      "Adam — validate the search interaction",
+      "Maya — prepare realistic meeting content",
+    ],
+    createdAt: "2026-11-11T09:00:00.000Z",
+    updatedAt: "2026-11-11T10:18:00.000Z",
+    relatedKnowledgeIds: ["atlas-principles", "search-research"],
+  },
+  {
+    id: "search-research",
+    title: "Retrieval patterns in knowledge tools",
+    type: "document",
+    summary:
+      "Research notes on command palettes, scoped search, result grouping, and highlighting.",
+    content: `<h2>Research question</h2><p>How do people retrieve information when they remember context but not an exact title?</p><h2>Findings</h2><ol><li>People begin with broad language and narrow through recognizable metadata.</li><li>Grouped results reduce type ambiguity.</li><li>Short highlighted excerpts are more useful than longer summaries during retrieval.</li></ol><h2>Implication</h2><p>Atlas search should index titles, body content, meeting summaries, transcripts, and tags, then present a short context-rich preview.</p>`,
+    collectionId: "research",
+    tags: ["Research", "Reference"],
+    isFavorite: true,
+    createdAt: "2026-10-29T14:20:00.000Z",
+    updatedAt: "2026-11-10T12:08:00.000Z",
+    relatedKnowledgeIds: ["atlas-principles"],
+  },
+  {
+    id: "capture-ideas",
+    title: "Frictionless capture ideas",
+    type: "note",
+    summary:
+      "A working list of ways to make capture immediate without sacrificing later organization.",
+    content: `<h2>Ideas</h2><ul><li>Open a blank note from the global shortcut.</li><li>Use the first line as an automatic title.</li><li>Offer recent collections after writing, not before.</li><li>Accept pasted transcripts as plain text and structure them later.</li></ul><p>Key constraint: creating an item should never require completing a form.</p>`,
+    collectionId: "atlas",
+    tags: ["Product"],
+    isFavorite: false,
+    createdAt: "2026-11-08T16:00:00.000Z",
+    updatedAt: "2026-11-13T08:12:00.000Z",
+    relatedKnowledgeIds: ["atlas-principles"],
+  },
+  {
+    id: "design-critique",
+    title: "Workspace design critique",
+    type: "meeting",
+    summary:
+      "A focused critique of density, navigation states, and the contextual details panel.",
+    content: `<h2>Summary</h2><p>The shell feels calm and legible. The details panel needs a clearer relationship to selection, and the home page should avoid dashboard-like metrics.</p><h2>Decisions</h2><ul><li>Use subtle surface separation instead of heavy shadows.</li><li>Limit accent colors to statuses and feedback.</li></ul><h2>Action items</h2><ul><li>Test the collapsed sidebar at laptop widths.</li><li>Add keyboard focus states to every control.</li></ul>`,
+    collectionId: "atlas",
+    tags: ["Decision", "Follow-up"],
+    isFavorite: false,
+    participants: ["Adam Weber", "Nora Singh"],
+    decisions: [
+      "Use subtle surface separation instead of heavy shadows",
+      "Limit accent colors to statuses and feedback",
+    ],
+    actionItems: [
+      "Test the collapsed sidebar at laptop widths",
+      "Add keyboard focus states to every control",
+    ],
+    createdAt: "2026-11-06T13:00:00.000Z",
+    updatedAt: "2026-11-06T14:02:00.000Z",
+    relatedKnowledgeIds: ["atlas-principles"],
+  },
+  {
+    id: "reading-notes",
+    title: "How to take smart notes",
+    type: "note",
+    summary:
+      "Lessons on writing atomic notes and building useful connections between ideas.",
+    content: `<h2>Core lesson</h2><p>A useful note should make one clear claim in your own words and remain understandable outside the context where it was captured.</p><h2>Practice</h2><ul><li>Write for your future self.</li><li>Prefer connections over categories.</li><li>Review notes through active projects.</li></ul>`,
+    collectionId: "learning",
+    tags: ["Reference"],
+    isFavorite: true,
+    createdAt: "2026-09-22T18:30:00.000Z",
+    updatedAt: "2026-11-02T17:45:00.000Z",
+    relatedKnowledgeIds: [],
+  },
+  {
+    id: "customer-interview-transcript",
+    title: "Customer interview — research workflow",
+    type: "transcript",
+    summary:
+      "Transcript covering capture habits, fragmented tools, and expectations for fast retrieval.",
+    content: `<h2>Transcript</h2><p><strong>Adam:</strong> Where do your research notes live today?</p><p><strong>Participant:</strong> Usually in three places. I start in a document, save links in a browser folder, and put decisions in the project tracker.</p><p><strong>Adam:</strong> What makes something hard to find later?</p><p><strong>Participant:</strong> I remember why I saved it, but not what I called it. Search works only when I already know the wording.</p><p><strong>Adam:</strong> What would feel better?</p><p><strong>Participant:</strong> One place where context is visible and I can narrow down naturally.</p>`,
+    collectionId: "research",
+    tags: ["Research"],
+    isFavorite: false,
+    participants: ["Adam Weber", "Research participant"],
+    createdAt: "2026-10-30T10:00:00.000Z",
+    updatedAt: "2026-10-30T11:25:00.000Z",
+    relatedKnowledgeIds: ["search-research"],
+  },
+  {
+    id: "quarterly-plan",
+    title: "Atlas MVP delivery plan",
+    type: "document",
+    summary:
+      "The working delivery sequence for shell, library, editing, meetings, and persistence.",
+    content: `<h2>Sequence</h2><ol><li>Application shell and navigation</li><li>Unified knowledge library</li><li>Creation and editing</li><li>Meetings and transcripts</li><li>Collections and tags</li><li>Persistent storage</li></ol><h2>Definition of done</h2><p>A user can capture a note or meeting summary, organize it, and retrieve it later with minimal friction.</p>`,
+    collectionId: "product",
+    tags: ["Strategy", "Product"],
+    isFavorite: false,
+    createdAt: "2026-10-22T08:00:00.000Z",
+    updatedAt: "2026-10-28T09:15:00.000Z",
+    relatedKnowledgeIds: ["atlas-principles"],
+  },
+];

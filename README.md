@@ -1,20 +1,35 @@
-# Mindspace
+# Atlas
 
-A static site deployed with GitHub Pages.
+A calm, content-first personal knowledge library built with React and
+TypeScript. Atlas follows the published
+[A/W Design System](https://adamw-studio.github.io/design-system-A-W/#overview)
+tokens and component conventions.
+
+## Prototype scope
+
+- Home, unified library, meetings, notes, documents, and transcripts
+- Search across titles, content, summaries, and tags (`Cmd/Ctrl + K`)
+- Create, edit, favorite, filter, sort, and delete knowledge
+- Collections, related knowledge, metadata, and responsive details panel
+- Light and dark themes
+- Browser-local persistence and autosave
+
+Data currently persists to `localStorage`. Supabase authentication and database
+storage are the intended production integration and are not connected in this
+prototype.
 
 ## Work locally
 
-Open `index.html` directly, or serve the directory:
-
 ```sh
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then visit <http://localhost:8000>.
+Create a production build with `npm run build`.
 
 ## Publish changes
 
-Every push to `main` automatically deploys the site:
+Every push to `main` builds and deploys the site through GitHub Actions:
 
 ```sh
 git add .
